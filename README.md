@@ -1,6 +1,4 @@
-
 # 用于自动皮肤病变分割的深度学习架构
-
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.12%2B-EE4C2C?logo=pytorch)](https://pytorch.org/)
@@ -33,7 +31,7 @@
 - **丰富的数据增强**
   基于 `albumentations` 实现翻转、旋转、弹性形变、亮度对比度抖动、高斯噪声等增强。
 - **全面的评估指标**
-  支持 IoU、Dice、Precision、Recall、Specificity、Accuracy 六项指标，附带 CSV 汇总与最佳模型可视化。
+  支持 IoU、Dice、Precision、Recall 等六项指标，附带 CSV 汇总与最佳模型可视化。
 - **可视化工具集**
   提供单张轮廓叠加对比、批量样本预测对比、雷达图/柱状图/平行坐标图等多模型性能对比绘图。
 
@@ -47,7 +45,7 @@
   <img src="comparison.png" width="60%">
 </div>
 
------
+---
 
 ## 项目结构
 
@@ -113,15 +111,13 @@ pip install pyyaml scikit-learn
    ```bash
    python data_pipeline/preprocess.py
    ```
-
 2. **修改配置**：编辑 `configs/config.yaml`，确保 `data.processed_root` 指向正确的预处理数据路径。
-
 3. **启动训练**：
 
    ```bash
    # 使用默认配置文件开始 5 折交叉验证训练
    python tools/train.py
-   
+
    # 或指定自定义配置文件
    python tools/train.py --config configs/config.yaml
    ```
@@ -131,20 +127,18 @@ pip install pyyaml scikit-learn
 ### 模型评估
 
 1. **配置测试权重路径**：在 `configs/config.yaml` 的 `checkpoint.test_model_paths` 中填入待测试的 `.pth` 文件路径列表。
-
 2. **运行测试脚本**：
 
    ```bash
    # 自动计算 IoU、Dice 等指标，生成 CSV 汇总并可视化最佳模型
    python tools/test.py
    ```
-
 3. **单张图像可视化**：
 
    ```bash
    # 使用配置文件中的默认图像与权重
    python tools/single_img.py
-   
+
    # 或通过命令行指定任意图像与权重
    python tools/single_img.py \
        --model HMTUNet \
@@ -180,4 +174,3 @@ copies or substantial portions of the Software.
 > 如果你在学习过程中有任何问题，欢迎提交 [Issue](https://github.com/[YourUsername]/MusicPlayer4/issues) 或 [Pull Request](https://github.com/[YourUsername]/MusicPlayer4/pulls)。祝你学习愉快！
 >
 > ⭐ 如果这个项目对你有帮助，欢迎 Star 支持！
-
