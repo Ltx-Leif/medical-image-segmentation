@@ -1,0 +1,29 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# PyTorch checkpoints & logs (allow committed checkpoints in models/)
+*.pt
+outputs/
+logs/
+snapshots/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Our
+data/
+author/
+
+# Checkpoints & outputs
+checkpoints/
+outputs/

@@ -1,0 +1,64 @@
+# -----------------------------------------------------------------
+# 统一配置文件：用于自动皮肤病变分割的深度学习架构
+# 项目: ISIC 2017 皮肤病变分割
+# -----------------------------------------------------------------
+
+# ==================== 数据路径配置 ====================
+data:
+  root: "./data"                       # 原始数据根目录
+  processed_root: "./data/processed"    # 预处理后数据保存目录
+  train_images: "./data/processed/train/images"
+  train_masks: "./data/processed/train/masks"
+  val_images: "./data/processed/val/images"
+  val_masks: "./data/processed/val/masks"
+  test_images: "./data/processed/test/images"
+  test_masks: "./data/processed/test/masks"
+
+# ==================== 模型与权重路径 ====================
+checkpoint:
+  root: "./checkpoints"                # 权重保存根目录
+  # 测试时使用的五折模型路径列表（相对路径或绝对路径）
+  test_model_paths:
+    - "./checkpoints/HMTUNet_without_Augmentation_fold1_best.pth"
+    - "./checkpoints/HMTUNet_without_Augmentation_fold2_best.pth"
+    - "./checkpoints/HMTUNet_without_Augmentation_fold3_best.pth"
+    - "./checkpoints/HMTUNet_without_Augmentation_fold4_best.pth"
+    - "./checkpoints/HMTUNet_without_Augmentation_fold5_best.pth"
+  # 单图可视化默认使用的模型路径
+  single_model_path: "./checkpoints/UNet_without_Augmentation_fold1_best.pth"
+  # 单图可视化默认使用的图像与掩码路径
+  single_image_path: "./data/processed/test/images/ISIC_0012330.jpg"
+  single_mask_path: "./data/processed/test/masks/ISIC_0012330_segmentation.png"
+
+# ==================== 超参数配置 ====================
+hyper_params:
+  img_size: 256                        # 输入图像尺寸 (H, W)
+  in_channels: 3                       # 输入通道数
+  num_classes: 1                       # 输出类别数（二分类分割）
+  batch_size: 8                        # 训练批次大小
+  test_batch_size: 1                   # 测试批次大小
+  num_workers: 4                       # 数据加载线程数
+  k_folds: 5                           # K折交叉验证折数
+  epochs: 100                          # 训练轮数
+  lr: 1.0e-4                           # 初始学习率
+  weight_decay: 1.0e-5                 # 权重衰减
+  optimizer: "AdamW"                   # 优化器名称
+  lr_scheduler: "CosineAnnealingLR"    # 学习率调度器
+  early_stopping_patience: 30          # 早停耐心值
+  threshold: 0.5                       # 二值化阈值
+  dice_smooth: 1.0                     # Dice 损失平滑项
+  epsilon: 1.0e-6                      # 指标计算防除零小量
+
+# ==================== 实验配置 ====================
+experiments:
+  - experiment_name: "HMTUNet_with_Augmentation"
+    model_name: "HMTUNet"
+    use_augmentation: true
+  - experiment_name: "HMTUNet_without_Augmentation"
+    model_name: "HMTUNet"
+    use_augmentation: false
+
+# ==================== 输出路径 ====================
+output:
+  root: "./outputs"                    # 结果输出根目录
+  csv_name: "evaluation_summary.csv"   # 测试评估汇总 CSV 文件名
