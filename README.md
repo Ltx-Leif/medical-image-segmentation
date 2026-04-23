@@ -2,7 +2,6 @@
 
 # 用于自动皮肤病变分割的深度学习架构
 
-<div align="center">
 
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.12%2B-EE4C2C?logo=pytorch)](https://pytorch.org/)
