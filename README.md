@@ -75,9 +75,9 @@
 │   ├── test.py              # 测试入口：指标评测与最优模型可视化
 │   ├── single_img.py        # 单张图像推理与轮廓叠加可视化
 │   └── evaluate_visualization.py  # 历史实验结果雷达图/柱状图对比
-├── checkpoints/             # 模型权重保存目录（.gitignore 忽略）
-├── outputs/                 # 评估结果与 CSV 输出目录（.gitignore 忽略）
-├── data/                    # 数据集挂载目录（.gitignore 忽略）
+├── checkpoints/             # 模型权重保存目录
+├── outputs/                 # 评估结果与 CSV 输出目录
+├── data/                    # 数据集目录
 ├── .gitignore
 └── README.md
 ```
@@ -117,7 +117,7 @@ pip install pyyaml scikit-learn
    ```bash
    # 使用默认配置文件开始 5 折交叉验证训练
    python tools/train.py
-
+   
    # 或指定自定义配置文件
    python tools/train.py --config configs/config.yaml
    ```
@@ -138,7 +138,7 @@ pip install pyyaml scikit-learn
    ```bash
    # 使用配置文件中的默认图像与权重
    python tools/single_img.py
-
+   
    # 或通过命令行指定任意图像与权重
    python tools/single_img.py \
        --model HMTUNet \
