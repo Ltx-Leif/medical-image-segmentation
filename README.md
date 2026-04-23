@@ -2,6 +2,8 @@
 
 # 用于自动皮肤病变分割的深度学习架构
 
+<div align="center">
+
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.12%2B-EE4C2C?logo=pytorch)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
@@ -181,4 +183,3 @@ copies or substantial portions of the Software.
 >
 > ⭐ 如果这个项目对你有帮助，欢迎 Star 支持！
 
-<div align="center">
